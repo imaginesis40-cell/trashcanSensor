@@ -58,6 +58,7 @@
     <td width="90%" align="center">
       <img src="analysis/센서_산점도/Sensor_value_by_distance.png" width="100%" alt="Sensor_value_by_distance"/>
       <br>
-      <sub>그림 3-1. 그림3 그래프 확대</td>
+      <sub>그림 3-1. 그림3 그래프 확대<br>
+      광원이 가까울수록 분산이 커짐을 알 수 있다</td>
   </tr>
  </table>
