@@ -1,4 +1,8 @@
 #************** test*******************#
+library(ggplot2)
+library(ggbreak)
+# ggbreak는 물결처리 용도 (중요X)
+
 getwd()
 virtualData <- scan("data/virtualData.csv.txt")
 print(virtualData)
@@ -37,7 +41,7 @@ scaleddepth <- apply(depth, 2, scale); scaleddepth
 
 # 종합 산점도
 
-idx <- seq(1, length(flame5cm), 10)
+idx <- seq(1, length(flame5cm), 7)
 framedFlame <- data.frame(flame5cm[idx], flame10cm[idx]);
 colnames(framedFlame) <- c("5cm거리", "10cm거리")
 rownames(framedFlame) <-1:length(flame5cm[idx])
@@ -45,7 +49,7 @@ framedFlame
 plotFlame <- stack(framedFlame)
 plotFlame
 
-ggplot(plotFlame, mapping = aes(x = ind, y = values)) + geom_point(aes(color = values), shape = 17, size = 1) + labs(x = "거리", y = "아날로그 값") + scale_color_gradient(low = "green", high = "red")
+ggplot(plotFlame, mapping = aes(x = ind, y = values)) + geom_point(aes(color = values), shape = 17, size = 1) + labs(x = "거리", y = "아날로그 값") + scale_color_gradient(low = "green", high = "red") + scale_y_break((c(300, 700)))
 
 
 
@@ -74,3 +78,28 @@ plotFlame
 ggplot(plotFlame, mapping = aes(x = ind, y = values)) + geom_point(aes(color = values), shape = 16, size = 5) + labs(x = "거리", y = "아날로그 값") + scale_color_gradientn(colors = c("#202060", "#FF0000"))
 
 abs((range(flame10cm))[1] - (range(flame10cm))[2])
+
+# 거리별 통계
+
+summary(flame5cm)
+summary(flame10cm)
+sd(flame5cm)
+mean(flame5cm)
+
+
+# flame 5cm일 때의 3시그마 아날로그 값
+zscores <- as.vector(scale(flame5cm)) 
+
+zscores
+target_idx <- which.min(abs(zscores - 3))
+flame5cm[target_idx]
+
+# flame 5cm일 떄의 3시그마 아날로그 오차
+c1 <- abs(flame5cm[target_idx] - mean(flame5cm))
+
+# flame 10cm일 때의 아날로그 평균값
+c2 <- mean(flame10cm)
+
+# flame 10cm일 떄의 아날로그 평균값 - flame 3시그마 오차 
+# 불꽃 감지 센서의 아날로그 값 진동 00.1%이상 커버
+finalvalue <- round(abs(c2 - c1), digits = 2); finalvalue
