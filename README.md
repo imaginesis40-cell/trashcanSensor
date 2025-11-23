@@ -51,3 +51,13 @@
       <sub>그림 3. 거리에 따른 센서 값 변동 비교</td>
   </tr>
  </table>
+<br><br>
+  
+<table>
+  <tr>
+    <td width="90%" align="center">
+      <img src="analysis/센서_산점도/Sensor_value_by_distance.png" width="100%" alt="Sensor_value_by_distance"/>
+      <br>
+      <sub>그림 3-1. 그림3 그래프 확대</td>
+  </tr>
+ </table>
