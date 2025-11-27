@@ -73,7 +73,7 @@
 <table>
   <tr>
     <td width="90%" align="center">
-      <img src="arduino/Circuit/EasyEda.png" width="100%" alt="Sensor_value_by_distance"/>
+      <img src="arduino/Circuit/Schematic_New-Project_2025-11-27.png"/>
       <br>
       <sub>회로도<br>
   </tr>
