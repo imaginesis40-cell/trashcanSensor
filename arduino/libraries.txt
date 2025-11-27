@@ -3,3 +3,8 @@
 1. LiquidCrystal_I2C (cpp)
    - GIT : https://github.com/johnrickman/LiquidCrystal_I2C
    - 용도: LCD 화면 제어 (출력장치)
+
+
+<<참조 사이트>>
+
+1. https://deneb21.tistory.com/219
