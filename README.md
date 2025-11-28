@@ -97,7 +97,7 @@
     <td width="33%" align="center">
       <img src="arduino/final_images/inner_side.jpg" width="100%" alt="flame_sensor_error_by_distance"/>
       <br>
-      <sub>그림 3. 내부 센서 배치</td>
+      <sub>그림 3. 내부 센서 배치와 절연 처리</td>
   </tr>
  </table>
 <br><br>
