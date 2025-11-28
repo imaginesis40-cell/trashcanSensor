@@ -56,9 +56,13 @@ int maxDepthCase[8] = {65, 70, 75, 80, 85, 90, 95, 100};
 // 화재감지 센서 3개의 반환값을 입력받아 최댓값 반환
 int senseMaxFlame(void);  
 
-// 초음파 센서3개의 반환값 평균을 3번 구해, 다시 평균하여 반환 -> mean(mean(cm))
+
+// 빈 쓰레기통의 초기 깊이를 측정해 백분율 변환의 분모 값을 반환하는 함수
 float setDepthValue(void);
+
 // 초음파 센서 3개를 각각 3번 합해 개별 평균을 낸 후, 가장 큰 2개의 센서 평균의 평균 반환
+// 즉, 이 함수는 가장 깊은 구간을 측정하는 센서 2개에 대한 함수이다.
+// 이러한 측정 방식을 통해, 비닐 몇개가 볼록 튀어나와서 데이터를 오염시키는 경우를 방지할 수 있음
 float getDepthValue(void);
 
 // 화재감지 시 명령
@@ -176,6 +180,7 @@ int senseMaxFlame()
         }
     return maxOfFlame;
 }
+/* <<setup에서 1회 실행되어 빈 쓰레기통의 깊이 반환 함수>> */
 float setDepthValue(void)
 {
   float duration = 0;
@@ -210,7 +215,7 @@ float setDepthValue(void)
 return mean;
 }
 
-/* <<setup에서 1회 실행되어 빈 쓰레기통의 깊이 반환 함수>> */
+/* <<쓰레기 양을 측정하여 평균을 반환하는 함수>> */
 float getDepthValue()
 {
   float duration = 0;
@@ -222,7 +227,7 @@ float getDepthValue()
 
   while(count < numOfSensor2 * 3)
     {
-    for(int i = 0; i < 3; i++)
+    for(int i = 0; i < 3; i++)  // 해석순서1. 각 센서당 연속해서 3번씩 값을 측정하여 합한 후
       {
       digitalWrite(trigSs[cmSumcount], HIGH);        
       delayMicroseconds(10);
@@ -230,8 +235,8 @@ float getDepthValue()
 
       duration = pulseIn(echoSs[cmSumcount], HIGH, 20000); // 20000마이크로초 -> 20밀리초 -> 0.02초
       cm = duration / 58.0;
-      cmSum[cmSumcount] += cm; 
-
+      cmSum[cmSumcount] += cm;  // 해석순서2. 각 센서에 1대1로 대응하는 배열에 저장한다
+                                // ex) 센서"1"의 1st, 2nd, 3d의 합은 cmSum["1"]에 저장한다
       count++;                          
       delay(10); 
       }
@@ -240,18 +245,18 @@ float getDepthValue()
 
     float ind = 0;
 
-    for(int j = 0; j < numOfSensor2 - 1; j++)
-      {
-        for(int i = 0; i < numOfSensor2 - 1; i++)     
+    for(int j = 0; j < numOfSensor2 - 1; j++)     // 버블정렬 -> 프기실 내용
+      {                                           // 크기가 n인 배열에 대해 n-1번 <@>을 시행하면 모든 값 정렬 가능
+        for(int i = 0; i < numOfSensor2 - 1; i++) // 이번 정렬은 내림차순이다  
           {
             if(cmSum[i+1] > cmSum[i])
             {
-              ind = cmSum[i+1]; cmSum[i+1] = cmSum[i];  cmSum[i] = ind;
+              ind = cmSum[i+1]; cmSum[i+1] = cmSum[i];  cmSum[i] = ind; // <@>
             }
           } 
       }   
 
-  for(int i = 0; i < numOfSensor2 - 1; i++)
+  for(int i = 0; i < numOfSensor2 - 1; i++)       // 값이 
       mean += cmSum[i];                     
 
       mean = mean/((numOfSensor2 - 1) * 3);  
