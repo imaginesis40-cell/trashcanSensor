@@ -79,6 +79,30 @@
   </tr>
  </table>
 <br><br>
+
+
+# 프로젝트 구현
+
+<table>
+  <tr>
+    <td width="33%" align="center">
+      <img src="arduino/final_images/from_front.jpg" width="100%" alt=""/>
+      <br>
+      <sub>그림 1. LCD디스플레이 및 주 회로<br>
+      (전면)</td>
+    <td width="33%" align="center">
+      <img src="arduino/final_images/from_side.jpg" width="100%" alt="5cm 산점도"/>
+      <br>
+      <sub>그림 2. (측면)</td>
+    <td width="33%" align="center">
+      <img src="arduino/final_images/inner_side.jpg" width="100%" alt="flame_sensor_error_by_distance"/>
+      <br>
+      <sub>그림 3. 내부 센서 배치</td>
+  </tr>
+ </table>
+<br><br>
+  
+<br><br><br>
         
 # 11.25 -> 11.27 개선점 <br>
 
