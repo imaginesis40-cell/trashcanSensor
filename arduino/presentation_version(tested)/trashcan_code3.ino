@@ -156,7 +156,7 @@ void loop()
         }
         else
           {
-           lcd.clear();               // 매핑한 int값이 55 이하면 백라이트 OFF
+           lcd.clear();               // 매핑한 int값이 60 이하면 백라이트 OFF
            lcd.noBacklight();         // 경제성 고려한 설계
           }                                        
      pastmillis = millis();
