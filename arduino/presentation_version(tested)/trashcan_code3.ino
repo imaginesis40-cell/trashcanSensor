@@ -88,14 +88,14 @@ int mapedValue = 0;
 
 unsigned long pastmillis = 0;  
 // (millis - pastmillis) => 마지막 측정으로부터 지난 시간
-  
+// unsigned long 사용 이유 -> 정수형 데이터 (시간 다루기 좋음) + 할당 메모리가 int보다 훨씬 크다 + ('-' 표현식에서)오버플로우 시 자동 보정
+
 void setup() 
 {
   lcd.init();          
   lcd.backlight();   
   lcd.setCursor(3,0);
-  // lcd.setCursor(6,0) -> 출력값 디스플레이 정중앙 위치
-
+       
 //  <<화재감지센서 핀 할당>>
 for(int i = 0; i < numOfSensor1; i++)
     {
