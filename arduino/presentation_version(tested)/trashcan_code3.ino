@@ -256,12 +256,12 @@ float getDepthValue()
           } 
       }   
 
-  for(int i = 0; i < numOfSensor2 - 1; i++)       // 값이 
+  for(int i = 0; i < numOfSensor2 - 1; i++)       // 값이 가장 큰 두 개의 센서 반환값 평가
       mean += cmSum[i];                     
 
-      mean = mean/((numOfSensor2 - 1) * 3);  
-
-return mean;
+      mean = mean/((numOfSensor2 - 1) * 3);       // 반환값에 대해 평균
+ 
+return mean;                                      // <getDepthValue 요약> 세 개의 센서 중 가장 깊은 값 2개에 대해 평균낸 뒤 반환 
 }
 
 /* <<화재감지 시 비상 사이렌>> */
