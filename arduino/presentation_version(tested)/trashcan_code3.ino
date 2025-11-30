@@ -29,7 +29,7 @@ EMERGENCYVALUE 42 에 대해
 # include <LiquidCrystal_I2C.h>
 
 // 피에조 부저 매크로
-# define C 261
+# define C 260
 # define D 300
 # define E 330
 # define F 350 
