@@ -126,7 +126,7 @@ for(int i = 0; i < numOfSensor2; i++)
     //빈 쓰레기통의 깊이 측정 (백분율의 분모)
 
   lcd.print("ProgramStart"); 
-  delay(1000);
+  delay(3000);
   lcd.clear();
   lcd.noBacklight();
 }
