@@ -74,7 +74,7 @@ int trigSs[numOfSensor2] = {0}; int echoSs[numOfSensor2] = {0};
 int fireSs[numOfSensor1] = {0}; 
 // 화재감지 핀 배열 선언
 const int piezo = 8; 
-// 피에조 출력 핀 배열 선언
+// 피에조 출력 핀 선언
 LiquidCrystal_I2C lcd(0x27, 16, 2); 
 // LCD class 선언
 
@@ -83,11 +83,11 @@ float setDepth = 0;
 float depthValue = 0; 
 // 쓰레기통이 얼마나 찼는지에 대한 백분율 (가득차면 100)
 int mapedValue = 0;    
-// 대응한 값 (코드 34의 maxDepthCase[9] 중 하나)
+// 대응한 출력값 (코드 34의 maxDepthCase[9] 중 하나)
 
 
 unsigned long pastmillis = 0;  
-// (millis - pastmillis) => 마지막 측정으로부터 지난 시간
+// (millis - pastmillis) => 마지막 쓰레기 측정으로부터 지난 시간
 // unsigned long 사용 이유 -> 정수형 데이터 (시간 다루기 좋음) + 할당 메모리가 int보다 훨씬 크다 + ('-' 표현식에서)오버플로우 시 자동 보정
 
 void setup() 
